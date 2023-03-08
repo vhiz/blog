@@ -1,0 +1,76 @@
+@import "../../app.scss";
+.register {
+  @include themify($themes) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: themed("bg");
+
+    h1 {
+      font-size: 20px;
+      color: themed("textColorSoft");
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      padding: 50px;
+      width: 200px;
+      background-color: themed("bgSoft");
+
+      input {
+        padding: 10px;
+        border: none;
+        background-color: transparent;
+        border-bottom: 1px solid themed("border");
+        outline: none;
+        color: themed("textColor");
+      }
+
+      button {
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 10px;
+        background-color: teal;
+        border-radius: 5px;
+        color: white;
+      }
+
+      p {
+        font-size: 12px;
+        text-align: center;
+        color: red;
+      }
+
+      span {
+        cursor: pointer;
+        font-size: 12px;
+        text-align: center;
+        color: themed("textColorSoft");
+      }
+
+      .google {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 14px;
+        cursor: pointer;
+        border: 1px solid themed("border");
+        padding: 10px;
+        border-radius: 5px;
+        color: themed("textColor");
+
+        img {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+  }
+}

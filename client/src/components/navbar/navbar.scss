@@ -1,0 +1,80 @@
+@import "../../app.scss";
+.navbar {
+  @include themify($themes) {
+    .contanier {
+      padding: 10px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .logo {
+        img {
+          height: 120px;
+          width: 120px;
+        }
+      }
+
+      .mode {
+        display: flex;
+        align-items: center;
+        transition: ease 1s;
+        cursor: pointer;
+
+        img {
+          height: 20px;
+          width: 20px;
+          transition: ease 1s;
+
+          &:hover {
+            height: 24px;
+            width: 24px;
+          }
+        }
+      }
+
+      .user {
+        img {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+        }
+      }
+
+      .links {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+
+        h6 {
+          font-size: 16px;
+          font-weight: 300;
+          color: themed("textColorSoft");
+        }
+        span {
+          cursor: pointer;
+          color: themed("textColorSoft");
+        }
+
+        .write {
+          width: 50px;
+          height: 50px;
+          background-color: rgb(127, 197, 127);
+          align-items: center;
+          justify-content: center;
+          display: flex;
+          font: 300px;
+          border-radius: 50%;
+          transition: ease 1s;
+
+          &:hover {
+            width: 48px;
+            height: 48px;
+            color: themed("tesxtColorSoft");
+            background-color: themed("bgSoft");
+            border: 1px solid themed("border");
+          }
+        }
+      }
+    }
+  }
+}
