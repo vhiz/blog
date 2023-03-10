@@ -1,6 +1,6 @@
 import axios from "axios";
 
 export const makeRequest = axios.create({
-  baseURL: process.env.REACT_APP_SERVER,
+  baseURL: "https://blog-zyos.onrender.com/api/",
   withCredentials: true,
 });
