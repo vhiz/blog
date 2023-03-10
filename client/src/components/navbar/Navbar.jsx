@@ -88,6 +88,12 @@ export default function Navbar() {
           >
             <h6>SPORT</h6>
           </Link>
+          <Link
+            style={{ textDecoration: "none", color: "inherit" }}
+            to={"/?cat=politics"}
+          >
+            <h6>POLITICS</h6>
+          </Link>
 
           {currentUser ? (
             <>

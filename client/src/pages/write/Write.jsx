@@ -252,6 +252,17 @@ export default function Write() {
             />
             <label htmlFor="sport">Sport</label>
           </div>
+          <div className="cat">
+            <input
+              type="radio"
+              name="cat"
+              id="politics"
+              value="politics"
+              onChange={(e) => setCat(e.target.value)}
+              checked={cat === "politics"}
+            />
+            <label htmlFor="politics">Politics</label>
+          </div>
         </div>
       </div>
     </div>

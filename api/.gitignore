@@ -1,1 +1,5 @@
 /node_modules
+/functions
+.firebaserc
+.env
+firebase.json

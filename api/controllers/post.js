@@ -5,7 +5,7 @@ const getAll = async (req, res) => {
   try {
     if (req.query.cat) {
       const posts = await Post.find({ cat: req.query.cat });
-      res.status(200).json(posts);
+      res.status(200).json(posts.sort((a, b) => b.createdAt - a.createdAt));
     } else {
       const posts = await Post.find();
       res.status(200).json(posts.sort((a, b) => b.createdAt - a.createdAt));
