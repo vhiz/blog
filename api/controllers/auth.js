@@ -45,7 +45,7 @@ const login = async (req, res) => {
   const token = sign({ id: user._id }, process.env.KEY);
 
   const { password, ...other } = user._doc;
-  res.cookie("blogToken", token, { httpOnly: true }).status(200).json(other);
+  res.cookie("__session", token, { httpOnly: true }).status(200).json(other);
 };
 
 const google = async (req, res) => {
@@ -55,7 +55,7 @@ const google = async (req, res) => {
       const token = sign({ id: user._id }, process.env.KEY);
       const { password, ...other } = user._doc;
       res
-        .cookie("blogToken", token, { httpOnly: true })
+        .cookie("__session", token, { httpOnly: true })
         .status(200)
         .json(other);
     } else {
@@ -66,7 +66,7 @@ const google = async (req, res) => {
       const token = sign({ id: newUser._id }, process.env.KEY);
       const { password, ...other } = newUser._doc;
       res
-        .cookie("blogToken", token, { httpOnly: true })
+        .cookie("__session", token, { httpOnly: true })
         .status(200)
         .json(other);
     }
@@ -76,7 +76,7 @@ const google = async (req, res) => {
 };
 
 const Logout = async (req, res) => {
-  res.cookie("blogToken", "", { httpOnly: true }).status(200).json("Loged out");
+  res.cookie("__session", "", { httpOnly: true }).status(200).json("Loged out");
 };
 
 module.exports = { register, login, google, Logout };

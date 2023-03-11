@@ -26,7 +26,7 @@ const getOne = async (req, res) => {
 };
 
 const addPost = async (req, res) => {
-  const token = req.cookies.blogToken;
+  const token = req.cookies.__session;
   if (!token) return res.status(401).json("Not Authenticated");
 
   verify(token, process.env.KEY, async (err, payload) => {
@@ -47,7 +47,7 @@ const addPost = async (req, res) => {
 };
 
 const deletePost = async (req, res) => {
-  const token = req.cookies.blogToken;
+  const token = req.cookies.__session;
   if (!token) return res.status(401).json("Not Authenticated");
 
   verify(token, process.env.KEY, async (err, payload) => {
@@ -68,7 +68,7 @@ const deletePost = async (req, res) => {
   });
 };
 const UpdatePost = async (req, res) => {
-  const token = req.cookies.blogToken;
+  const token = req.cookies.__session;
   if (!token) return res.status(401).json("Not Authenticated");
 
   verify(token, process.env.KEY, async (err, payload) => {
