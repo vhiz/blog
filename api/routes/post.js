@@ -9,7 +9,7 @@ const {
 
 router.get("/", getAll);
 router.get("/find/:id", getOne);
-router.post("/", addPost);
+router.post("/:id", addPost);
 router.delete("/:id", deletePost);
 router.put("/:id", UpdatePost);
 

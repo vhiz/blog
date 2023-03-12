@@ -1,7 +1,7 @@
 import "./write.scss";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Upload from "../../icon/upload.png";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import {
@@ -13,6 +13,7 @@ import {
 import app from "../../firebase";
 import { makeRequest } from "../../axios";
 import { useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/authContext";
 
 export default function Write() {
   const state = useLocation().state;
@@ -24,6 +25,7 @@ export default function Write() {
   const [img, setImg] = useState(null);
   const [posts, setPosts] = useState("");
   const navigate = useNavigate();
+  const { currentUser } = useContext(AuthContext);
 
   const uploadFile = (file, urlType) => {
     const storage = getStorage(app);
@@ -68,7 +70,7 @@ export default function Write() {
 
   const mutation = useMutation(
     (newPost) => {
-      return makeRequest.post(`/posts`, newPost);
+      return makeRequest.post(`/posts/${currentUser._id}`, newPost);
     },
     {
       onSuccess: () => {

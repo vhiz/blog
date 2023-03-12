@@ -26,12 +26,12 @@ const getOne = async (req, res) => {
 };
 
 const addPost = async (req, res) => {
-  const token = req.cookies.__session;
-  if (!token) return res.status(401).json("Not Authenticated");
+  // const token = req.cookies.__session;
+  // if (!token) return res.status(401).json("Not Authenticated");
 
-  verify(token, process.env.KEY, async (err, payload) => {
-    if (err) return res.status(403).json("Token Not Valid");
-    const userId = payload.id;
+  // verify(token, process.env.KEY, async (err, payload) => {
+  //   if (err) return res.status(403).json("Token Not Valid");
+    const userId = req.params.id;
 
     try {
       await Post.create({
@@ -43,21 +43,21 @@ const addPost = async (req, res) => {
     } catch (error) {
       res.status(500).json(error.message);
     }
-  });
+  // });
 };
 
 const deletePost = async (req, res) => {
-  const token = req.cookies.__session;
-  if (!token) return res.status(401).json("Not Authenticated");
+  // const token = req.cookies.__session;
+  // if (!token) return res.status(401).json("Not Authenticated");
 
-  verify(token, process.env.KEY, async (err, payload) => {
-    if (err) return res.status(403).json("Token Not Valid");
+  // verify(token, process.env.KEY, async (err, payload) => {
+  //   if (err) return res.status(403).json("Token Not Valid");
 
     const post = await Post.findById(req.params.id);
-    const userId = payload.id;
+    // const userId = req.params.userId;
 
-    if (post.userId !== userId)
-      return res.status(403).json("You can delete only your post");
+    // if (post.userId !== userId)
+    //   return res.status(403).json("You can delete only your post");
 
     try {
       await Post.findByIdAndDelete(req.params.id);
@@ -65,20 +65,20 @@ const deletePost = async (req, res) => {
     } catch (error) {
       res.status(400).json(error.message);
     }
-  });
+  // });
 };
 const UpdatePost = async (req, res) => {
-  const token = req.cookies.__session;
-  if (!token) return res.status(401).json("Not Authenticated");
+  // const token = req.cookies.__session;
+  // if (!token) return res.status(401).json("Not Authenticated");
 
-  verify(token, process.env.KEY, async (err, payload) => {
-    if (err) return res.status(403).json("Token Not Valid");
+  // verify(token, process.env.KEY, async (err, payload) => {
+  //   if (err) return res.status(403).json("Token Not Valid");
 
-    const post = await Post.findById(req.params.id);
-    const userId = payload.id;
+  //   const post = await Post.findById(req.params.id);
+  //   const userId = payload.id;
 
-    if (post.userId !== userId)
-      return res.status(403).json("You can update only your post");
+  //   if (post.userId !== userId)
+  //     return res.status(403).json("You can update only your post");
     try {
       await Post.findByIdAndUpdate(req.params.id, {
         $set: req.body,
@@ -87,7 +87,7 @@ const UpdatePost = async (req, res) => {
     } catch (error) {
       res.status(400).json(error.message);
     }
-  });
+  // });
 };
 
 module.exports = { getAll, getOne, addPost, deletePost, UpdatePost };
