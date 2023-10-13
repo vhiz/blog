@@ -1,14 +1,16 @@
 {
   "name": "api",
   "version": "1.0.0",
-  "description": "",
+  "description": "A school project",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "dev":"nodemon index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Mgbeahurike Victor",
+  "email":"victormgbeahurike82@gmail.com",
+  "phoneNo":"09056394367",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
